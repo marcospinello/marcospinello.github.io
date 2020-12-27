@@ -2,7 +2,7 @@ miro.onReady(() => {
   miro.initializeInner({
     extensionPoints: {
       bottomBar: {
-        title: "add sticker with today date",
+        title: "add sticker with today\'s date date",
         svgIcon: '<rect x="0" y="0" width="24" height="24" fill="currentColor" />',
         onClick: () => {
           let todaysDate = new Date().toDateString()
