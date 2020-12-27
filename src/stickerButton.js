@@ -1,13 +1,17 @@
+const blackButton = '<rect x="0" y="0" width="24" height="24" fill="currentColor" />'
+
 miro.onReady(() => {
   miro.initializeInner({
     extensionPoints: {
       bottomBar: {
         title: "add sticker with today\'s date date",
-        svgIcon: '<rect x="0" y="0" width="24" height="24" fill="currentColor" />',
+        svgIcon: blackButton,
         onClick: () => {
+          const waitOneSec = () => new Promise( r => setTimeout( r, 2000 ) )
           let todaysDate = new Date().toDateString()
-          miro.board.widgets.create({type:'sticker', text: 'Today is', x: 0, y: 0})
-          miro.board.widgets.update({id: sticker.id, text: todaysDate, style:{stickerBackgroundColor:'#7ac673'}})
+          let sticker = ( await miro.board.widgets.create( { type:'sticker', text: 'Today is', x: 0, y: 0 } ) )[0]
+          await waitOneSec()
+          await miro.board.widgets.update( { id: sticker.id, text: todaysDate, style:{ stickerBackgroundColor:'#7ac673' } } )
         },
       },
     },
